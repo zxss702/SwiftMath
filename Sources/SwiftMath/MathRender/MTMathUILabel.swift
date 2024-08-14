@@ -331,3 +331,19 @@ public extension CGContext {
         }
     }
 }
+
+public func getLaTeXSize(
+    latex: String,
+    font: MTFont,
+    color: MTColor,
+    currentStyle:MTLineStyle
+) -> CGSize {
+    var error : NSError? = nil
+    let mathList = MTMathListBuilder.build(fromString: latex, error: &error)
+    if error == nil {
+        let displayList = MTTypesetter.createLineForMathList(mathList, font: font, style: currentStyle)
+        return CGSize(width: displayList!.width, height: displayList!.ascent + displayList!.descent)
+    } else {
+        return CGSize(width: 150, height: 50)
+    }
+}
