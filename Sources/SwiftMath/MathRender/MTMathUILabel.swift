@@ -312,7 +312,7 @@ public extension CGContext {
             var textX = CGFloat(0)
             switch textAlignment {
             case .left: textX = boundsIn.minX
-            case .center: textX = boundsIn.midX - displayList!.width
+            case .center: textX = boundsIn.midX - displayList!.width / 2
                 case .right:  textX = boundsIn.maxX - displayList!.width
             }
             
