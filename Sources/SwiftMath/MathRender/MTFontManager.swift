@@ -22,9 +22,10 @@ public class MTFontManager {
     }
 
     public init() { }
-    
+
+    @RWLocked
     var nameToFontMap = [String: MTFont]()
-    
+
     public func font(withName name:String, size:CGFloat) -> MTFont? {
         var f = self.nameToFontMap[name]
         if f == nil {
@@ -54,6 +55,34 @@ public class MTFontManager {
     
     public func termesFont(withSize size:CGFloat) -> MTFont? {
         MTFontManager.fontManager.font(withName: "texgyretermes-math", size: size)
+    }
+    
+    public func asanaFont(withSize size:CGFloat) -> MTFont? {
+        MTFontManager.fontManager.font(withName: "Asana-Math", size: size)
+    }
+    
+    public func eulerFont(withSize size:CGFloat) -> MTFont? {
+        MTFontManager.fontManager.font(withName: "Euler-Math", size: size)
+    }
+    
+    public func firaRegularFont(withSize size:CGFloat) -> MTFont? {
+        MTFontManager.fontManager.font(withName: "FiraMath-Regular", size: size)
+    }
+    
+    public func notoSansRegularFont(withSize size:CGFloat) -> MTFont? {
+        MTFontManager.fontManager.font(withName: "NotoSansMath-Regular", size: size)
+    }
+    
+    public func libertinusRegularFont(withSize size:CGFloat) -> MTFont? {
+        MTFontManager.fontManager.font(withName: "LibertinusMath-Regular", size: size)
+    }
+    
+    public func garamondMathFont(withSize size:CGFloat) -> MTFont? {
+        MTFontManager.fontManager.font(withName: "Garamond-Math", size: size)
+    }
+    
+    public func leteSansFont(withSize size:CGFloat) -> MTFont? {
+        MTFontManager.fontManager.font(withName: "LeteSansMath", size: size)
     }
     
     public var defaultFont: MTFont? {
