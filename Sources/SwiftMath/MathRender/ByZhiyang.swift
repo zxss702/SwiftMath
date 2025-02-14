@@ -14,6 +14,10 @@ public func getLaTeXSize(
     color: MTColor,
     currentStyle:MTLineStyle
 ) -> CGSize {
+    let latex = latex
+        .replacingOccurrences(of: #"\operatorname*{lim}"#, with: #"\displaystyle\lim"#)
+        .replacingOccurrences(of: #"\overrightarrow"#, with: #"\vec"#)
+    
     var error : NSError? = nil
     let mathList = MTMathListBuilder.build(fromString: latex, error: &error)
     if error == nil {
@@ -33,6 +37,10 @@ public extension CGContext {
         textAlignment: MTTextAlignment,
         boundsIn: CGRect
     ) {
+        let latex = latex
+            .replacingOccurrences(of: #"\operatorname*{lim}"#, with: #"\displaystyle\lim"#)
+            .replacingOccurrences(of: #"\overrightarrow"#, with: #"\vec"#)
+        
         var error : NSError? = nil
         let mathList = MTMathListBuilder.build(fromString: latex, error: &error)
         if error == nil {
