@@ -35,7 +35,8 @@ public extension CGContext {
         color: MTColor,
         currentStyle:MTLineStyle,
         textAlignment: MTTextAlignment,
-        boundsIn: CGRect
+        boundsIn: CGRect,
+        context: CGContext
     ) {
         let latex = latex
             .replacingOccurrences(of: #"\operatorname*{lim}"#, with: #"\displaystyle\lim"#)
@@ -63,7 +64,6 @@ public extension CGContext {
             let textY = (boundsIn.height - height) / 2 + displayList!.descent
             displayList!.position = CGPoint(x: textX, y: textY)
             
-            let context = MTGraphicsGetCurrentContext()!
             context.saveGState()
             displayList!.draw(context)
             context.restoreGState()
